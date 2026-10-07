@@ -70,6 +70,7 @@ export function saveDoc(doc) {
 
 // public/ 底下的檔案要加上 base，部署到子路徑時才不會壞掉
 export const SAMPLE_BG = `${import.meta.env.BASE_URL}backgrounds/sample.jpeg`;
+export const SAMPLE_LYRICS_BG = `${import.meta.env.BASE_URL}backgrounds/with-lyrics-card-sample.jpeg`; // 含歌詞的完成品，用來對照排版
 
 export const DEFAULT_SETTINGS = {
   showBg: true,
