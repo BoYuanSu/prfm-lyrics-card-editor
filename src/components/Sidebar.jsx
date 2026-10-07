@@ -1,5 +1,6 @@
 import NumberField from './NumberField';
 import { CARD_SIZE, DEFAULT_SAFE } from '../lib/units';
+import { SAMPLE_BG } from '../lib/doc';
 
 export default function Sidebar({ doc, layouts, selectedId, settings, onSelect, onSafeChange, onSettings, onBgUpload }) {
   const { safe } = doc;
@@ -51,7 +52,7 @@ export default function Sidebar({ doc, layouts, selectedId, settings, onSelect, 
             上傳背景圖
             <input type="file" accept="image/*" hidden onChange={(e) => e.target.files[0] && onBgUpload(e.target.files[0])} />
           </label>
-          <button onClick={() => onSettings({ bgSrc: '/backgrounds/sample.jpeg', showBg: true })}>使用樣品</button>
+          <button onClick={() => onSettings({ bgSrc: SAMPLE_BG, showBg: true })}>使用樣品</button>
         </div>
         <label className="field">
           <span className="field-label">背景透明度 {Math.round(settings.bgOpacity * 100)}%</span>

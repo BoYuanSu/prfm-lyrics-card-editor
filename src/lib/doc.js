@@ -68,9 +68,12 @@ export function saveDoc(doc) {
   } catch {}
 }
 
+// public/ 底下的檔案要加上 base，部署到子路徑時才不會壞掉
+export const SAMPLE_BG = `${import.meta.env.BASE_URL}backgrounds/sample.jpeg`;
+
 export const DEFAULT_SETTINGS = {
   showBg: true,
-  bgSrc: '/backgrounds/sample.jpeg',
+  bgSrc: SAMPLE_BG,
   bgOpacity: 1,
   paperColor: '#0b0e2b',
   showSafe: true,
