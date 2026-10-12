@@ -6,6 +6,7 @@ export default function ExportDialog({ warnings, onExport, onClose }) {
     page: 'card',
     dpi: 600,
     includeBg: false,
+    forceBlack: false,
     cardBorder: false,
     safeBorder: false,
     filename: 'lyrics-card',
@@ -61,6 +62,11 @@ export default function ExportDialog({ warnings, onExport, onClose }) {
         <label className="check">
           <input type="checkbox" checked={opts.includeBg} onChange={(e) => set({ includeBg: e.target.checked })} />
           包含預覽背景與紙張底色（關閉時只輸出文字，背景透明）
+        </label>
+
+        <label className="check">
+          <input type="checkbox" checked={opts.forceBlack} onChange={(e) => set({ forceBlack: e.target.checked })} />
+          文字一律以黑色輸出（忽略各區塊設定的文字顏色，適合用白紙打樣）
         </label>
 
         <div className="field">

@@ -189,7 +189,7 @@ export default function App() {
   const warnings = [];
   if (outOfBounds.length) warnings.push(`有 ${outOfBounds.length} 個文字區塊超出可編輯範圍，請縮小字級或調整內容。`);
   if (doc.blocks.some((b) => isLight(b.color)))
-    warnings.push('含有白色／淺色文字：若只輸出文字並印在白紙上會看不見；印在既有卡片上需印刷廠支援白墨。');
+    warnings.push('含有白色／淺色文字：若只輸出文字並印在白紙上會看不見；印在既有卡片上需印刷廠支援白墨；打樣時可勾選「文字一律以黑色輸出」。');
 
   const doExport = async (opts) => {
     const background = opts.includeBg
@@ -197,8 +197,9 @@ export default function App() {
       : null;
     const guides = opts.cardBorder || opts.safeBorder ? { card: opts.cardBorder, safe: opts.safeBorder } : null;
     const args = { ...opts, background, guides };
-    if (opts.format === 'pdf') await exportPdf(doc, args);
-    else await exportPng(doc, args);
+    const out = opts.forceBlack ? { ...doc, blocks: doc.blocks.map((b) => ({ ...b, color: '#000000' })) } : doc;
+    if (opts.format === 'pdf') await exportPdf(out, args);
+    else await exportPng(out, args);
   };
 
   const importJson = async (file) => {
